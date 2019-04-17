@@ -1,0 +1,29 @@
+﻿@page "{id}"
+@model FaceDetectionWeb.Pages.Images.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<a style="font-size: 2.5rem;" asp-page="./Index"> &#60;&#60; Back</a>
+
+<h1>Details @Model.Image.Title</h1>
+
+
+<img class="imgDetails" src="~/@Model.Image.ImageUrl" alt="@Model.Image.AltText" />
+
+
+
+@if (!string.IsNullOrWhiteSpace(Model.ModifielVersionPath))
+{
+    <h2>Processed Version: </h2>
+    <img class="imgDetails" src="~/@Model.ModifielVersionPath" alt="@Model.Image.AltText" />
+}
+else
+{
+    <form method="post">
+        <input asp-for="@Model.Image.Id" hidden />
+        <input type="submit" value="Reschedule face detection" />
+    </form>
+    <h2>Image not yet processed</h2>
+}
+

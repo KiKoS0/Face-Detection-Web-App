@@ -1,0 +1,61 @@
+﻿@page
+@model FaceDetectionWeb.Pages.Images.IndexModel
+@{
+    ViewData["Title"] = "Images";
+}
+
+<h1>Welcome to the images store</h1>
+
+
+<form method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div>
+        <label asp-for="ImageViewModel.Title"></label>
+        <input asp-for="ImageViewModel.Title" />
+        <span asp-validation-for="ImageViewModel.Title" class="text-danger"></span>
+    </div>
+    <div>
+        <label asp-for="ImageViewModel.AltText"></label>
+        <input asp-for="ImageViewModel.AltText" />
+        @*<span asp-validation-for="ImageViewModel.AltText" class="text-danger"></span>*@
+    </div>
+    <div>
+        <label asp-for="ImageViewModel.Caption"></label>
+        <input asp-for="ImageViewModel.Caption" />
+        @*<span asp-validation-for="ImageViewModel.Caption" class="text-danger"></span>*@
+    </div>
+    <div>
+        <label asp-for="ImageViewModel.ImageUpload"></label>
+        <input asp-for="ImageViewModel.ImageUpload" />
+        @*<span asp-validation-for="ImageViewModel.ImageUpload" class="text-danger"></span>*@
+    </div>
+    <div>
+        <label asp-for="ImageViewModel.FaceDetect"></label>
+        <input asp-for="ImageViewModel.FaceDetect" />
+        @*<span asp-validation-for="ImageViewModel.ImageUpload" class="text-danger"></span>*@
+    </div>
+    <input type="submit" value="[ Create ]" />
+</form>
+
+<div class="row">
+    @for (int i = 0; i < Model.GridImageView.Columns; i++)
+    {
+        <div class="column">
+            @for (int j = 0; j < Model.GridImageView.Images.ElementAt(i).Count; j++)
+            {
+                <a asp-page="Details" asp-route-id="@Model.GridImageView.Images.ElementAt(i).ElementAt(j).Id">
+                    <img src="@Model.GridImageView.Images.ElementAt(i).ElementAt(j).Path" alt="@Model.GridImageView.Images.ElementAt(i).ElementAt(j).AltText" style="width:100%" />
+                </a>
+            }
+        </div>
+    }
+    @*<div class="column">
+
+
+            @for (int i = 0; i < Model.Images.Count ; i++)
+            {
+                <img src="~/@Model.ImagesPaths.ElementAt(i)"  alt="@Model.Images.ElementAt(i).AltText" style="width:100%"/>
+            }
+        </div>*@
+</div>
+
