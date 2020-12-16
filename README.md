@@ -11,7 +11,7 @@ The easiest way to build the project is to:
 2. Download and install [RabbitMQ](https://www.rabbitmq.com/).
 3. Download and install [MongoDB](https://www.mongodb.com/).
 
-Note: The project is configured with the default rabbitmq-mongodb settings, so if you wish to change anything (ports for instance) you should modify the project settigns accordingly.
+Note: The project is configured with the default rabbitmq-mongodb settings, so if you wish to change anything (ports for instance) you should modify the project settings accordingly.
 
 ### Dependencies
 * [OpenCV](https://github.com/opencv/opencv)
